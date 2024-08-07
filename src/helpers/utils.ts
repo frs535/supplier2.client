@@ -46,12 +46,12 @@ export const copyRowGoods: (row: GoodsType) => GoodsType = (row)=>{
             name: row.product.name,
         },
         characteristic: {
-            id: row.product.id,
-            name: row.product.name,
+            id: row.characteristic.id,
+            name: row.characteristic.name,
         },
         pack: {
-            id: row.product.id,
-            name: row.product.name,
+            id: row.pack.id,
+            name: row.pack.name,
         },
         deliveryDate: row.deliveryDate,
         quantity: row.quantity,

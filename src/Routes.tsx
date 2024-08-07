@@ -12,6 +12,7 @@ import SignUp from "./pages/authentication/SignUp";
 import AuthLayout from "./Layouts/AuthLayout";
 import EcommerceLayout from "./Layouts/EcommerceLayout";
 import Cart from "./pages/proposal/customer/Cart.tsx";
+import ProductDetails from "./pages/proposal/customer/ProductDetails.tsx";
 
 const routes: RouteObject[]=[
 
@@ -68,6 +69,10 @@ const routes: RouteObject[]=[
                     {
                         path: ':id',
                         element: <Cart/>
+                    },
+                    {
+                        path: 'product-details/:id/:variantId',
+                        element: <ProductDetails />
                     }
                 ]
             },

@@ -2,7 +2,7 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { createLogger } from 'redux-logger';
 import {ecomSlice, EcomState} from "./slices/ecomSlice";
 import offersSlice, {OffersState} from "./slices/offersSlice";
-import {clientApi} from "../api/api.ts";
+import {offerApi} from "../api/api.ts";
 import {combineReducers, configureStore} from "@reduxjs/toolkit";
 
 export interface ConfigState {
@@ -15,7 +15,7 @@ const logger = createLogger();
 const reducers = {
     [ecomSlice.name]: ecomSlice.reducer,
     [offersSlice.name]: offersSlice.reducer,
-    "clientApi" : clientApi.reducer,
+    "offerApi" : offerApi.reducer,
 };
 
 const rootReducer = combineReducers<typeof reducers>(reducers);
@@ -29,7 +29,7 @@ export const store = configureStore({
             serializableCheck: false
         }).concat([
             logger,
-            clientApi.middleware
+            offerApi.middleware
         ]);
     },
     devTools: import.meta.env.NODE_ENV !== 'production',

@@ -13,6 +13,8 @@ export interface OffersState {
     proposal: ProposalType| null,
     cart: GoodsType[],
     proposalAmounts: proporsalAmountsType,
+    token: string,
+    expirationTo: Date,
 }
 
 const initialState : OffersState = {
@@ -24,12 +26,17 @@ const initialState : OffersState = {
         tax: 0,
         subtotal: 0,
     },
+    token: "",
+    expirationTo: new Date(),
 }
 
 const offersSlice = createSlice({
     name: "offers",
     initialState,
     reducers: {
+        setToken: (state, action) => {
+            state.token = action.payload;
+        },
         setCart: (state, action: PayloadAction<GoodsType[]>) => {
             state.cart = action.payload;
             state.proposalAmounts = calcProposal(state.cart, state.proposal?.includesVAT|| true);
@@ -42,6 +49,13 @@ const offersSlice = createSlice({
                 state.proposalAmounts = calcProposal(state.cart, state.proposal?.includesVAT|| true);
             }
         },
+        setCartCustomerComment: (state, action: PayloadAction<{comment: string, id: string}>) => {
+            const row = state.cart.find((item) => item._id === action.payload.id);
+            if (row){
+                row.customerComment = action.payload.comment;
+            }
+        },
+
         removeCart: (state, action: PayloadAction<string>) => {
             const row = state.cart.find((item) => item._id === action.payload);
             if (row) {
@@ -58,6 +72,6 @@ const offersSlice = createSlice({
     }
 })
 
-export const { setCart, setRowQuantity, setProposal, removeCart } = offersSlice.actions;
+export const { setToken, setCart, setRowQuantity, setCartCustomerComment, setProposal, removeCart } = offersSlice.actions;
 
 export default offersSlice;

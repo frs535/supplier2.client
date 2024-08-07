@@ -7,6 +7,8 @@ import {
     useSettingsMountEffect
 } from "@frs535/react-ui-components";
 import {useGetCategoryQuery} from "../api/api";
+import {useSelector} from "react-redux";
+import {ConfigState} from "../store/config.ts";
 
 const EcommerceLayout = () => {
   useSettingsMountEffect({
@@ -16,6 +18,8 @@ const EcommerceLayout = () => {
     disableHorizontalNavbarShape: true
   });
 
+    const cart = useSelector((state:ConfigState)=> state.offers.cart);
+
     const {data, isLoading} = useGetCategoryQuery()
 
     if (isLoading)
@@ -23,12 +27,12 @@ const EcommerceLayout = () => {
 
   return (
     <>
-      <EcommerceTopbar />
+      <EcommerceTopbar cartItems={cart.length} />
       <div className="position-relative">
           {data && <EcommerceNavbar categories={data}/>}
         <Outlet />
       </div>
-      <EcommerceFooter />
+      <EcommerceFooter description={"Description"} ecommerceFooters={[]} />
       <Footer />
       <ChatWidget />
     </>

@@ -1,8 +1,15 @@
 
 export type ProposalType = {
-    id: number;
+    id: string;
+    linkId: string;
+    auth?: {
+        token: string;
+        expirationTo: Date;
+    },
     number: string,
     date: Date,
+    direction: string,
+    basedOn: string,
     manager: {
         id: string,
         name: string,
@@ -34,6 +41,7 @@ export type GoodsType = {
     product: {
         id: string,
         name: string,
+        article: string, //TODO: сделаьб вырузку
     },
     characteristic: {
         id: string,
@@ -56,4 +64,5 @@ export type GoodsType = {
     amountTaxes: number,
     amount: number,
     comment: string,
+    customerComment: string,
 }

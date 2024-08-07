@@ -1,4 +1,4 @@
-import {Button, currencyFormat, QuantityButtons, Scrollbar} from "@frs535/react-ui-components";
+import {currencyFormat, QuantityButtons, Scrollbar, Button} from "@frs535/react-ui-components";
 import { Table } from 'react-bootstrap';
 import {useMemo, useState} from "react";
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
@@ -8,7 +8,6 @@ import {GoodsType} from "../../pages/proposal/types.ts";
 import {useDispatch, useSelector} from "react-redux";
 import {removeCart, setRowQuantity} from "../../store/slices/offersSlice.ts";
 import {ConfigState} from "../../store/config.ts";
-
 
 const ProposalTable = () => {
 
@@ -81,11 +80,11 @@ const ProposalTableRow = ({ row }: { row: GoodsType}) => {
         <tr className="cart-table-row" key={row._id}>
             <td className="py-0">
                 <div className="border border-translucent rounded-2">
-                    {/*<img src={product.image} alt={product.name} width={53} />*/}
+                    <img src={`/assets/${row.product.id}/256_256_product_1.jpg`} alt={row.product.name} width={53} />
                 </div>
             </td>
             <td>
-                <Link className="fw-semibold line-clamp-2" to="#!">
+                <Link className="fw-semibold line-clamp-2" to={`/proposal/product-details/${row.product.id}/${row.characteristic.id}`}>
                     {`${row.product.name}(${row.characteristic.name})`}
                 </Link>
             </td>
