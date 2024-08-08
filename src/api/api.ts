@@ -1,4 +1,4 @@
-import {createApi, fetchBaseQuery, FetchBaseQueryError, retry} from "@reduxjs/toolkit/query/react";
+import {createApi, fetchBaseQuery, retry} from "@reduxjs/toolkit/query/react";
 import {Category, ProductType} from "@frs535/react-ui-components";
 import {ProposalType} from "../pages/proposal/types.ts";
 import {ConfigState} from "../store/config.ts";

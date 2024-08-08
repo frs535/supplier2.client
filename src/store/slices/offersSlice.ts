@@ -34,7 +34,7 @@ const offersSlice = createSlice({
     name: "offers",
     initialState,
     reducers: {
-        setToken: (state, action) => {
+        setToken: (state, action: PayloadAction<string>) => {
             state.token = action.payload;
         },
         setCart: (state, action: PayloadAction<GoodsType[]>) => {

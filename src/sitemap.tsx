@@ -1,4 +1,5 @@
 import {RouteItems} from "@frs535/react-ui-components";
+// @ts-ignore
 import { UilChartPie } from '@iconscout/react-unicons';
 
 

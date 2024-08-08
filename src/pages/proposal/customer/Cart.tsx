@@ -41,6 +41,7 @@ const Cart = () => {
     return (<div>Not found proposal...</div>)
 
   dispatch(setProposal(proposal));
+  // @ts-ignore
   dispatch(setToken(proposal.auth.token));
 
   const breadcrumbItems: PageBreadcrumbItemType[] =[];

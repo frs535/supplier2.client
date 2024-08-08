@@ -44,6 +44,7 @@ export const copyRowGoods: (row: GoodsType) => GoodsType = (row)=>{
         product: {
             id: row.product.id,
             name: row.product.name,
+            article: row.product.article,
         },
         characteristic: {
             id: row.characteristic.id,
@@ -62,5 +63,6 @@ export const copyRowGoods: (row: GoodsType) => GoodsType = (row)=>{
         tax: row.tax,
         amountTaxes: row.amountTaxes,
         comment: row.comment,
+        customerComment: row.customerComment,
     }
 };
